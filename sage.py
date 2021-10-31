@@ -256,15 +256,19 @@ ms_strs = [
 "52a3685d08a58ff9fb53e1ab65951a45b87a15ef6e435cf2d0a00cdf2209d56c",
 "259ded08dc1f1e084ffdf3dcb022e1842471503f4da3bf43d82063089d506812",
 "8629b345bfe7809add37ce83cb6a3fbaf39069dde1037a1f4f2b8911133fe684",
-    ]
+];
+
 ## The hash I want to express as a linear combo of the list above 
 target = list(map(int, f"{int('1b44a798be539030df8dec6fb91014eaca4335b88e836202df0d1d6c3b40d7cd', 16):0256b}"))
+
 print(len(target), target)
 ms = list(map(lambda x: list(map(int, f"{int(x, 16):0256b}")), ms_strs))
 print(len(ms), len(ms[0]))
 
 # solving in the scalar field for G1
 modulus = int("1A0111EA397FE69A4B1BA7B6434BACD764774B84F38512BF6730D2A0F6B0F6241EABFFFEB153FFFFB9FEFFFFFFFFAAAB", 16)
+modulus = int("73eda753299d7d483339d80809a1d80553bda402fffe5bfeffffffff00000001", 16)
+
 G = Integers(modulus)
 A = matrix(G, ms)
 b = matrix(G, target)
